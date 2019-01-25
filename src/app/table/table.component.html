@@ -1,0 +1,392 @@
+ <div calss="header" style="font-size: x-large;
+text-align: center;
+background-color: gray;
+height: 32px;
+margin-top: -11px;
+color: white;">
+    Admin
+</div>
+<div class ="header-2">
+    <div style="position: relative;
+    top: 5px;
+    font-size: larger;
+    color: white;"> Interface/summary </div>
+
+    <div class="aign" style=" text-align: center;
+    font-size: x-large;
+    position: relative;
+    bottom: 10px;
+    color: white;">
+      Pannel
+    </div>
+    <button class="logout" mat-button (click) ="del()">
+        
+            <i class="material-icons">
+                    settings_power
+                    </i>logout
+
+    </button>
+</div>
+<div class ="position">
+
+    <input  class="right" [(ngModel)]="searchText" placeholder="search text goes here">
+<!-- 
+
+<div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <button (click)="add()">Add</button>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <!-- <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      </ng-container> -->
+  
+      <!-- Name Column -->
+      <!-- <ng-container matColumnDef="name" fxFlex="40px">
+        <mat-header-cell *matHeaderCellDef> protocol </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+         <mat-select placeholder="My Options">
+            <mat-option [value]="opt-1"> IP </mat-option>
+            <mat-option [value]="opt-2"> None </mat-option>
+        
+          </mat-select>
+           </mat-cell>
+      </ng-container> -->
+  
+      <!-- Weight Column -->
+      <!-- <ng-container matColumnDef="weight">
+        <mat-header-cell *matHeaderCellDef> sourceip </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+           <input [value]="element.Name" [(ngModel)]="element.sourceip" matInput placeholder="Enter your name" [formControl]="sourceip" required>
+           </mat-cell>
+      </ng-container> -->
+  
+      <!-- Symbol Column -->
+      <!-- <ng-container matColumnDef="symbol" fxFlex="40px">
+        <mat-header-cell *matHeaderCellDef> destinationIP </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+           <input [value]="element.Name" [(ngModel)]="element.symbol" matInput placeholder="Enter your name" [formControl]="symbol" required>
+           </mat-cell>
+      </ng-container> -->
+  
+     <!-- <ng-container matColumnDef="abcd">
+        <mat-header-cell *matHeaderCellDef> AcessType </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+             <mat-select placeholder="My Option">
+            <mat-option [value]="opt-1"> permt </mat-option>
+            <mat-option [value]="opt-2"> denied </mat-option>
+            
+          </mat-select>
+        </mat-cell>
+     </ng-container>
+        <ng-container matColumnDef="efgh">
+        <mat-header-cell *matHeaderCellDef> action  </mat-header-cell>
+         <mat-cell *matCellDef="let element"> 
+           <button (click)="deleteFieldValue()">delete</button>
+         </mat-cell>
+        </ng-container>
+  
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div> --> -->
+  
+  <!-- mytrail-method-1-->
+   <table class="table table-striped table-bordered cellspacing=20">
+  <thead>
+      <tr style="background-color:lightgreen;">
+          <th>S.No</th>
+          <th>Protocol</th>
+          <th>Source IP</th>
+          <th>Destionation IP</th>
+          <th>Acess Type</th>
+          <th  style="padding:0 15px 0 15px;">Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <button mat-button  (click)="addFieldValue()">Add More Rule
+        <i class="material-icons custom">add</i>
+      </button>
+      <tr *ngFor="let field of fieldArray | paginate: { itemsPerPage: 5, currentPage: p };let i = index;">
+          <td>
+                <input [(ngModel)]="field.SNo" class="form-control width" type="number" name="{{field.SNo}}" />
+          </td>
+          <td>
+                <mat-form-field>
+                   <mat-select placeholder="My Option">
+                  <mat-option [value]="opt-1"> permt </mat-option>
+                     <mat-option [value]="opt-2"> denied </mat-option>
+            
+                      </mat-select> 
+                          </mat-form-field>  
+            
+            
+           
+
+          </td>
+          <td>
+              <input [(ngModel)]="field.SourceIP" class="form-control" type="text" name="{{field.SourceIP}}" />
+          </td>
+          <td>
+              <input [(ngModel)]="field.DestionationIP" class="form-control" type="text" name="{{field.DestionationIP}}" />
+          </td>
+          <td>
+                <mat-form-field>
+                    <mat-select placeholder="My Option">
+                        <mat-option [value]="opt-1"> IP </mat-option>
+                           <mat-option [value]="opt-2"> None </mat-option>
+                  
+                            </mat-select> 
+                          </mat-form-field>  
+
+        </td>
+        
+         <td>
+               <i class ="material-icons custom2" (click)="deleteFieldValue(i)">delete </i>
+
+          </td>  
+          
+      </tr>
+      <tr>
+            
+          <td>
+              <input class="form-control width" type="number" id="newAttributeCode" [(ngModel)]="newAttribute.SNo" name="newAttributeSNo" />
+          </td>
+          <td>
+                <mat-form-field>
+                    <mat-select placeholder="My Option">
+                        <mat-option [value]="opt-1"> permit </mat-option>
+                           <mat-option [value]="opt-2"> denied </mat-option>
+                  
+                            </mat-select> 
+                          </mat-form-field>  
+              
+            
+          </td>
+          <td>
+              <input class="form-control" type="text" id="newAttributeSourceIP" [(ngModel)]="newAttribute.SourceIP" name="newAttributeSourceIP" />
+          </td>
+          <td>
+            <input class="form-control" type="text" id="newAttributeDestinationIp" [(ngModel)]="newAttribute.DestinationIP" name="newAttributeDestinationIP" />
+        </td>
+        <td>
+                <mat-form-field>
+                
+                    <mat-select placeholder="My Option">
+                        <mat-option [value]="opt-1"> None </mat-option>
+                           <mat-option [value]="opt-2"> IP </mat-option>
+                  
+                            </mat-select> 
+                  </mat-form-field>  
+               </td>
+        <td>
+            <i class ="material-icons custom2" (click)="deleteFieldValue(i)">delete </i>
+
+       </td>  
+          
+      </tr>
+      
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>  
+
+
+
+</div>   
+
+<!-- | filter:{SNo:searchText,Protocol:searchText,SourceIP:searchText,DestinationIP:searchText,AcessType:searchText};  -->
+
+<!-- my tail-method2 -->
+ <!-- <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSourceUsers" matSort class="mat-elevation-z8">
+
+        <!-- ID Column -->
+        <!-- <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+        </ng-container> -->
+
+    <!-- Name Column -->
+<!--     
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+ </div> --> 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ <!-- <div class="example-container mat-elevation-z8">
+     <mat-table class="custom" [dataSource]="dataSource">
+
+       <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+    
+      
+        <ng-container matColumnDef="Protocol">
+          <mat-header-cell *matHeaderCellDef> Protocol </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Protocol}} </mat-cell>
+        </ng-container>
+    
+      
+        <ng-container matColumnDef="SourceIP">
+          <mat-header-cell *matHeaderCellDef> Source-IP </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.SourceIP}} </mat-cell>
+        </ng-container>
+    
+      
+        <ng-container matColumnDef="DestinationIP">
+          <mat-header-cell *matHeaderCellDef> Destination-IP </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.DestinationIP}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Acess type">
+            <mat-header-cell *matHeaderCellDef> Acess Type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Acesstype}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Action}} </mat-cell>
+          </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      
+    </mat-table>
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+ 
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>source</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+            <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+        <tr *ngFor="let field of fieldArray; let i= index;">
+            <td>
+                <input [(ngModel)]="field.code" class="form-control" type="text" name="{{field.code}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.name}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="field.source" class="form-control" type="text" name="{{field.source}}" />
+            </td>
+            <td>
+                <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.code" name="newAttributeCode" />
+            </td>
+            <td>
+                <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
+            </td>
+            <td>
+                <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
+            </td>
+            <td>
+                <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.source" name="newAttributePrice" />
+            </td>
+            <td> -->
+                 <!-- <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button> -->
+     
+                 <!-- <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button> 
+            </td> 
+        </tr>
+    </tbody>
+</table>     -->
+<!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+  
+  

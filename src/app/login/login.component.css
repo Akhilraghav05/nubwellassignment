@@ -1,0 +1,25 @@
+
+.border-class{
+    position: relative;
+    width: 24%;
+    height: 309px;
+    margin: 0px auto;
+    top: 200px;
+    border: 1px solid;
+    border-radius:55px;
+}
+
+mat-card-header{
+    text-align: center;
+    font-size: -webkit-xxx-large;
+ 
+}
+.inner-div{
+    top: 10px;
+    position: relative;
+    margin-left: 70px;
+}
+mat-card-header mat-card-title{
+    font-size: 31px;
+    color :gray;
+}

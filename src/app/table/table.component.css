@@ -1,0 +1,61 @@
+.table{
+    border: 1px solid;
+}
+.custom{
+    position: relative;
+    float: left;
+    top: 6px;
+
+}
+.custom2{
+    color: red;
+}
+.width{
+    width: 28%;
+    position: relative;
+    left: 65px;
+}
+.position{
+    top: 50px;
+    position: relative;
+    margin-left: 113px;
+    margin-top: 100px;
+}
+.right{
+    
+    float: right;
+    position: relative;
+    margin-right: 167px;
+    bottom: -10px;
+}
+.header-2{
+    background-color: #5884b0;
+    height: 35px;
+    
+}
+.logout{
+    float: right;
+    top: -50px;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 200px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  
+  .custom.mat-table mat-header-row,
+  .custom.mat-table mat-row {
+    padding: 0 24px 0 0;
+  }
+  
+  .custom.mat-table mat-header-cell,
+  .custom.mat-table mat-cell {
+    padding: 0 0 0 24px;
+  }
+  

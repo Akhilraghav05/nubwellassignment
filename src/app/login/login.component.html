@@ -1,0 +1,35 @@
+<div class="border-class">
+
+  <mat-card-header>
+    <mat-card-title>Nubwell<br> Networks</mat-card-title>
+  </mat-card-header>
+  <div class="inner-div">
+    <mat-card-content>
+      <form class="example-form">
+        <!-- <table class="example-full-width" cellspacing="0"> -->
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+        </mat-form-field>
+
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+            </mat-form-field>
+          </td>
+        </tr>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()" color="primary">Login</button>
+    </mat-card-actions>
+
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </div>
+</div>
+<!-- <button mat-raised-button (click)="get()" color="primary">Get</button>
+<!-- <button mat-raised-button (click)="Set()" color="primary">Set</button> -->
+<!-- <button mat-raised-button (click)="get()" color="primary">Delete</button> 
+<button mat-raised-button (click)="set()" color="primary">Delete</button> 
+<button mat-raised-button (click)="del()" color="primary">Delete</button>  -->
